@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: cameronengineer
+    runtime: static
+    repo: https://github.com/cameronengineer/cameronengineer-site
+    branch: main
+    autoDeployTrigger: commit
+    buildCommand: echo "Static HTML; no build required"
+    staticPublishPath: site
+    domains:
+      - cameronengineer.com
