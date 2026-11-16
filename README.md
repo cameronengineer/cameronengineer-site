@@ -36,3 +36,26 @@ Italian flashcards site.
 Verify `cameronengineer.com` as a Domain property in Google Search Console and
 submit `https://cameronengineer.com/sitemap.xml` after DNS is connected. Update
 profile website fields on GitHub and LinkedIn to this domain.
+
+## Deployment and DNS
+
+Render preview: https://cameronengineer.onrender.com/
+
+Render service: `srv-dbt4r69srm7s73a7th50`.
+
+In Cloudflare, use these records with TTL Auto and proxy status DNS only:
+
+| Type  | Name | Target                       |
+| ----- | ---- | ---------------------------- |
+| CNAME | @    | cameronengineer.onrender.com  |
+| CNAME | www  | cameronengineer.onrender.com  |
+
+Render has both domains registered. `www.cameronengineer.com` redirects to
+`cameronengineer.com` once verified. After DNS propagates, verify the domains in
+Render's custom-domain settings so TLS certificates can be provisioned.
+
+Run the static checks before committing content updates:
+
+```sh
+python3 scripts/check_site.py
+```
